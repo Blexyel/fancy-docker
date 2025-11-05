@@ -1,0 +1,15 @@
+[package]
+name = "fancy-docker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chrono = { version = "0.4.42", default-features = false }
+chrono-humanize = { version = "0.2.3", default-features = false }
+clap = { version = "4.5.51", features = ["derive", "std"], default-features = false }
+dotenvy = { version = "0.15.7", default-features = false }
+reqwest = { version = "0.12.24", features = ["json"], default-features = false }
+serde = { version = "1.0.228", features = ["derive"], default-features = false }
+serde_json = { version = "1.0.145", default-features = false }
+tabled = { version = "0.20.0", default-features = false, features = ["std", "derive"] }
+tokio = { version = "1.48.0", features = ["macros", "rt-multi-thread"], default-features = false }
