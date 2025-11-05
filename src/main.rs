@@ -71,8 +71,9 @@ async fn get_containers(truncate: bool) -> Vec<Docker> {
     let builder = Client::builder();
     let output: Vec<DockerOutput>;
     let url = dotenvy::var("DOCKER_URL").unwrap_or("http://localhost".to_string());
-    if dotenvy::var("DOCKER_UNIX").is_err() {
-        let http = builder.build().expect("Failed to build client");
+    let unix = dotenvy::var("DOCKER_UNIX").unwrap_or("/var/run/docker.sock".to_string());
+    if unix.is_empty() {
+        let http = builder.http1_only().build().expect("Failed to build client");
 
         let res = http
             .get(format!("{}/containers/json", url))
@@ -81,7 +82,7 @@ async fn get_containers(truncate: bool) -> Vec<Docker> {
             .expect("Failed to send request")
             .json::<Vec<DockerOutput>>()
             .await
-            .expect("Failed to parse JSON response");
+            .expect("Failed to parse JSON response (are you sure the Docker daemon is running?)");
 
         output = res;
     } else {
@@ -97,7 +98,7 @@ async fn get_containers(truncate: bool) -> Vec<Docker> {
             .expect("Failed to send request")
             .json::<Vec<DockerOutput>>()
             .await
-            .expect("Failed to parse JSON response");
+            .expect("Failed to parse JSON response (are you sure the Docker daemon is running?)");
 
         output = res;
     }
