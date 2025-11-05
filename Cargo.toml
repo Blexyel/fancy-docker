@@ -1,6 +1,6 @@
 [package]
 name = "fancy-docker"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 description = "make docker ps fancy again"
 authors = ["Blexyel"]
@@ -12,7 +12,7 @@ license = "WTFPL"
 [dependencies]
 chrono = { version = "0.4.42", default-features = false }
 chrono-humanize = { version = "0.2.3", default-features = false }
-clap = { version = "4.5.51", features = ["derive", "std"], default-features = false }
+clap = { version = "4.5.51", features = ["derive", "std", "help"], default-features = false }
 dotenvy = { version = "0.15.7", default-features = false }
 reqwest = { version = "0.12.24", features = ["json"], default-features = false }
 serde = { version = "1.0.228", features = ["derive"], default-features = false }
