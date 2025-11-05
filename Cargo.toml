@@ -2,6 +2,12 @@
 name = "fancy-docker"
 version = "0.1.0"
 edition = "2024"
+description = "make docker ps fancy again"
+authors = ["Blexyel"]
+homepage = "https://github.com/Blexyel/fancy-docker"
+repository = "https://github.com/Blexyel/fancy-docker"
+readme = "README.txt"
+license = "WTFPL"
 
 [dependencies]
 chrono = { version = "0.4.42", default-features = false }
